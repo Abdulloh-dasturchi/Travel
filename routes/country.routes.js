@@ -3,9 +3,9 @@ const { authenticate, adminAccess } = require("../middlewares/auth");
 const upload = require("../utils/fileUpload");
 const { getAllCountries,deleteCountry,postCountries,updateCountry } = require("../controllers/country.controller");
 router.get("/get/all",  getAllCountries);
-router.delete("/delete", authenticate,adminAccess, deleteCountry);
-router.post("/add",authenticate,adminAccess,  upload.single("flag"), postCountries);
-router.post("/update", authenticate,adminAccess, upload.single("flag"), updateCountry);
+router.delete("/delete",  deleteCountry);
+router.post("/add",  upload.single("flag"), postCountries);
+router.post("/update",  upload.single("flag"), updateCountry);
 /**
  * @swagger
  * tags:
