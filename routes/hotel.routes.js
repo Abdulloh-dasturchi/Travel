@@ -5,19 +5,19 @@ const router = express.Router();
 const { authenticate, adminAccess,  } = require("../middlewares/auth");
 
 // Update hotel
-router.put("/update",authenticate,adminAccess, updateHotel);
+router.put("/update", updateHotel);
 
 // Delete hotel
-router.delete("/delete/:id",authenticate,adminAccess, deleteHotel);
+router.delete("/delete/:id",deleteHotel);
 
 // Get all hotels
 router.get("/get/all", getAllHotels); 
 
 // Get hotel by id
-router.get("/get/one",authenticate, getHotelById);
+router.get("/get/one", getHotelById);
 
 // Add hotel 
-router.post("/add",authenticate,adminAccess,upload.fields([ { name: 'image1', maxCount: 1 }, { name: 'image2', maxCount: 1 },{ name: 'image3', maxCount: 1 }, { name: 'image4', maxCount: 1 }]), createHotel);
+router.post("/add",upload.fields([ { name: 'image1', maxCount: 1 }, { name: 'image2', maxCount: 1 },{ name: 'image3', maxCount: 1 }, { name: 'image4', maxCount: 1 }]), createHotel);
 
 // Add comments
 router.post("/add/comments",authenticate,addComments); 
