@@ -3,15 +3,15 @@ const router = Router();
 const upload = require("../utils/fileUpload");
 const {deleteTravel,getAllTravels,getTravel,postTravel,putTravel,addComments,getAllComments,getAllCommentsTravel,deleteComment} = require("../controllers/travel.controller");
 const {authenticate, adminAccess} = require("../middlewares/auth");
-router.post("/post",authenticate,adminAccess,upload.single("image"),postTravel);
+router.post("/post",upload.single("image"),postTravel);
 router.get("/get/all", getAllTravels);
 router.get("/get/one",getTravel);
-router.delete("/delete",authenticate,adminAccess,deleteTravel);
-router.put("/put",authenticate,adminAccess,upload.single("image"),putTravel);
+router.delete("/delete",deleteTravel);
+router.put("/put",upload.single("image"),putTravel);
 router.post("/add/comments",authenticate,addComments); 
 router.get("/get/comments",getAllComments);
 router.get("/get/comments/travel",getAllCommentsTravel);
-router.delete("/delete/comments",authenticate,adminAccess,deleteComment);
+router.delete("/delete/comments",deleteComment);
 
 /**
  * @swagger
